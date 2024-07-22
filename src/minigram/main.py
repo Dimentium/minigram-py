@@ -8,7 +8,7 @@ from typing import Optional, Any
 
 from .request import sync_req, async_req
 
-DEBUG = False
+DEBUG = True
 ALLOWED_UPDATES = [
     "message",
     "edited_message",
@@ -105,6 +105,7 @@ class MiniGramUpdate:
         self.update_id = extract_value(data, "update_id")
         self.chat_id = extract_value(self.payload, "chat.id")
         self.text = extract_value(self.payload, "text")
+        self.caption = extract_value(self.payload, "caption")
         self.message_id = extract_value(self.payload, "message_id")
         self.from_user = extract_value(self.payload, "from", {})
         self.user = extract_value(self.payload, "user", {})
